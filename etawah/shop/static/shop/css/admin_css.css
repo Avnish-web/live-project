@@ -1,0 +1,20 @@
+/* Change admin header background and text */
+#header {
+    background-color: #1a73e8; /* Your color */
+}
+
+#header h1, #header .module h2, .model-name {
+    color: #fff;
+}
+
+/* Change logo */
+#header-logo {
+    content: url('/static/shop/images/logo.png'); /* Your logo path */
+    height: 40px;
+    width: auto;
+}
+
+/* Change sidebar colors */
+#user-tools, .module h2, .app-list h2 {
+    color: #fff;
+}

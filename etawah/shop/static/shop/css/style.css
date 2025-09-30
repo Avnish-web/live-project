@@ -1,8 +1,7 @@
-/* ============================
-   🌟 Global & Theme Overrides
-=============================== */
+/* Light Purple from gradient 
+*/
 :root {
-    --bs-primary: #a18cd1; /* Light Purple from gradient */
+    --bs-primary: #a18cd1; 
     --bs-primary-rgb: 161, 140, 209;
 }
 
@@ -25,9 +24,6 @@ body {
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* ============================
-   🌟 Buttons
-=============================== */
 .btn-modern {
     border-radius: 2rem;
     font-weight: 600;
@@ -58,9 +54,6 @@ body {
     to   { opacity: 1; }
 }
 
-/* ============================
-   🌟 Hero Section
-=============================== */
 .hero-bg-animated {
     background: linear-gradient(120deg, #a18cd1, #fbc2eb);
     background-size: 200% 200%;
@@ -82,10 +75,8 @@ body {
     letter-spacing: -2px;
 }
 
-/* ============================
-   🌟 Cards & Features
-=============================== */
 .card-feature {
+    
     border: 1px solid #eee;
     border-radius: 1.25rem;
     background: #fff;
@@ -104,16 +95,10 @@ body {
     box-shadow: 0 10px 40px #a18cd130;
 }
 
-/* ============================
-   🌟 Background Helpers
-=============================== */
 .fade-gradient-bg {
     background: linear-gradient(180deg, #f9fafd 0, #ebedee 100%);
 }
 
-/* ============================
-   🌟 Icons & Effects
-=============================== */
 .integration-icon {
     filter: drop-shadow(0 4px 10px rgba(0,0,0,0.1));
     transition: transform 0.3s ease, box-shadow 0.3s;
@@ -132,9 +117,6 @@ body {
     transform: rotate(90deg);
 }
 
-/* ============================
-   🌟 Bootstrap Color Extensions
-=============================== */
 .bg-primary-soft {
     background-color: rgba(161, 140, 209, 0.15) !important;
 }
