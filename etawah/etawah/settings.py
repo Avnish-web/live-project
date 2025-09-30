@@ -12,6 +12,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
+    '135.235.228.118',
     'cosmic-centralindia-ns-4187579137fc.trafficmanager.net',  # Add this
 ]
 
