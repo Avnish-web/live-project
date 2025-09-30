@@ -1,20 +1,111 @@
-/* Change admin header background and text */
-#header {
-    background-color: #1a73e8; /* Your color */
+/* Full page layout */
+body.login-split {
+    display: flex;
+    height: 100vh;
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: #f5f5f5;
 }
 
-#header h1, #header .module h2, .model-name {
+/* Container split */
+.login-container {
+    display: flex;
+    width: 100%;
+}
+
+/* LEFT PANEL with gradient */
+.login-left {
+    flex: 1;
+    background: linear-gradient(135deg, #ff4d4d, #6a11cb);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    text-align: center;
+}
+
+/* CSS "Logo" instead of image */
+.css-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ffcc70, #ff8177);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+}
+
+/* RIGHT PANEL */
+.login-right {
+    flex: 1;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 50px;
+    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 12px 0 0 12px;
+}
+
+.login-right h2 {
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.sub-text {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+/* Form styling */
+#login-form input[type="text"],
+#login-form input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    background: linear-gradient(135deg, #6a11cb, #ff4d4d);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+/* Back button */
+.back-btn {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 14px;
     color: #fff;
+    text-decoration: none;
+    opacity: 0.9;
+    transition: 0.3s;
 }
 
-/* Change logo */
-#header-logo {
-    content: url('/static/shop/images/logo.png'); /* Your logo path */
-    height: 40px;
-    width: auto;
-}
-
-/* Change sidebar colors */
-#user-tools, .module h2, .app-list h2 {
-    color: #fff;
+.back-btn:hover {
+    opacity: 1;
 }
