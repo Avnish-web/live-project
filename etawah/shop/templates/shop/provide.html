@@ -1,0 +1,787 @@
+<img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" style="height:64px;margin-right:32px"/>
+
+# provide me the full code of
+
+add more content and more modern beautifull ui and animations
+above
+
+Here is a detailed homepage template for a modern, visually engaging SaaS platform using Django, Bootstrap 5, AOS (Animate On Scroll), and Lottie animations, with a variety of rich sections and compelling UI features. This version includes extra content, advanced UI patterns, more animation hooks, and showcases best practices from top SaaS designs of 2025.[^1][^2][^3]
+
+***
+
+**Instructions for Use**
+
+- Ensure Bootstrap 5 CSS/JS, Bootstrap Icons, and [AOS](https://michalsnik.github.io/aos/) animation libraries are loaded in your `base.html`.
+- Download Lottie’s [lottie-web JS](https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.6/lottie.min.js) for animated vector sections.
+- Replace `{% static %}` asset paths with your own static files.
+- Customize images, icons, Lottie JSON files for branding and desired visuals.
+
+***
+
+```html
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block extra_head %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+<style>
+html {scroll-behavior:smooth;}
+body {background: #f9fafd;}
+.btn-modern {border-radius: 2rem; transition:background 0.3s;}
+.section-heading {font-size:2.6rem;font-weight:800;letter-spacing:-1px;}
+.hero-bg-animated {
+  background: linear-gradient(120deg, #a18cd1 0%, #fbc2eb 100%);
+  animation: gradientMove 6s ease-in-out infinite alternate;
+}
+@keyframes gradientMove {
+  100% {background-position:right}
+}
+.shadow-soft {box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);}
+.card-feature {border-radius:1.25rem; transition:transform 0.25s,box-shadow 0.25s;}
+.card-feature:hover {
+  transform:translateY(-9px) scale(1.03);
+  box-shadow:0 16px 36px rgba(80,60,180,0.14)
+}
+.lottie-hero {max-width:440px;margin-inline:auto;display:block;}
+.hero-number {font-size:2.5rem;font-weight:700;letter-spacing:-2px;}
+section {scroll-margin-top:80px;}
+.cta-floating {
+  position:fixed;bottom:28px;right:28px;
+  z-index:30;background:linear-gradient(90deg,#ffb6b6,#7ee8fa);
+  color:#222;padding:0.8rem 2.5rem;font-weight:700;
+  border-radius:2.5rem;box-shadow:0 4px 22px rgba(80,74,135,0.14);
+  transition:filter .2s;filter:brightness(1);
+  animation: pulseCta 2s infinite alternate;
+}
+@keyframes pulseCta {
+  from {box-shadow:0 4px 22px rgba(80,74,135,0.14);}
+  to {box-shadow:0 7px 45px 0px rgba(80,74,200,0.25);}
+}
+.testimonial-card {transition:box-shadow .2s;}
+.testimonial-card:hover {box-shadow:0 5px 36px #a18cd120;}
+.stat-countup {font-size:2.6rem;font-weight:700;}
+.fade-gradient-bg {background:linear-gradient(90deg,#fdfbfb 0,#ebedee 100%);}
+.faq-icon {transition:transform .2s;}
+.accordion-button:not(.collapsed) .faq-icon {transform:rotate(90deg);}
+::-webkit-scrollbar{width:8px;}::-webkit-scrollbar-thumb{background:#e1eafd;}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- Sticky Modern Nav -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-3">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center fw-bold" href="/">
+      <img src="{% static 'shop/images/logo.svg' %}" alt="Logo" width="36" class="me-2">Etawah Shops Market
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav gap-lg-4 align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+        <li class="nav-item"><a class="nav-link" href="#plans">Plans</a></li>
+        <li class="nav-item"><a class="nav-link" href="#customers">Customers</a></li>
+        <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+        <li class="nav-item">
+          <a href="/signup/" class="btn btn-modern btn-primary ms-lg-2 px-4 py-2 shadow-soft">Try Free</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section with Lottie, Animation, Parallax -->
+<section class="hero-bg-animated text-white text-center py-5 position-relative overflow-hidden" style="background-size:180% 180%;">
+  <div class="container position-relative z-1 py-5">
+    <div class="row align-items-center pb-3">
+      <div class="col-lg-7 pe-lg-5" data-aos="fade-right" data-aos-delay="120">
+        <h1 class="fw-bold display-2 mb-4">
+          Unify<br><span class="text-primary">Your Business</span> Online
+        </h1>
+        <p class="lead mb-5 fs-4 fw-light">From sales to support, Etawah Shops Market simplifies everything.<br>
+          Boost workflow, automate, and scale with confidence.</p>
+        <div class="d-flex gap-3 justify-content-center justify-content-lg-start mb-5">
+          <a href="#features" class="btn btn-modern btn-light btn-lg shadow px-4">Start Now</a>
+          <a href="#plans" class="btn btn-modern btn-outline-light btn-lg px-4">See Pricing</a>
+        </div>
+        <div class="d-flex flex-wrap gap-4 justify-content-center justify-content-lg-start mt-5">
+          <div>
+            <div class="hero-number" data-aos="fade-up" data-aos-delay="200"><span class="hero-num" data-amount="11000">0</span>+</div>
+            <div>Active Users</div>
+          </div>
+          <div>
+            <div class="hero-number" data-aos="fade-up" data-aos-delay="240"><span class="hero-num" data-amount="540">0</span>+</div>
+            <div>Businesses</div>
+          </div>
+          <div>
+            <div class="hero-number" data-aos="fade-up" data-aos-delay="300">99.9%</div>
+            <div>Uptime</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5 d-flex flex-column align-items-center pt-5 pt-lg-0" data-aos="fade-left">
+        <div id="lottie-hero" class="lottie-hero"></div>
+        <script>
+          document.addEventListener('DOMContentLoaded',function(){
+            if(window.lottie) lottie.loadAnimation({
+              container: document.getElementById('lottie-hero'),
+              renderer: 'svg',
+              loop: true,
+              autoplay: true,
+              path: "{% static 'shop/lottie/saas-dashboard.json' %}"
+            });
+          });
+        </script>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Animated Customer Companies Marquee -->
+<section class="fade-gradient-bg py-3 border-bottom">
+  <div class="container py-2">
+    <div class="d-flex gap-4 flex-nowrap overflow-auto" style="--bs-gutter-x:3rem;">
+      <img src="{% static 'shop/images/logo1.png' %}" height="40" alt="Partner" class="opacity-75" data-aos="fade-left">
+      <img src="{% static 'shop/images/logo2.png' %}" height="40" alt="Partner" class="opacity-75" data-aos="fade-left" data-aos-delay="80">
+      <img src="{% static 'shop/images/logo3.png' %}" height="40" alt="Partner" class="opacity-75" data-aos="fade-left" data-aos-delay="160">
+      <img src="{% static 'shop/images/logo4.png' %}" height="40" alt="Partner" class="opacity-75" data-aos="fade-left" data-aos-delay="240">
+      <img src="{% static 'shop/images/logo5.png' %}" height="40" alt="Partner" class="opacity-75" data-aos="fade-left" data-aos-delay="320">
+    </div>
+  </div>
+</section>
+
+<!-- Features Grid with Animated Cards -->
+<section id="features" class="py-6 bg-white overflow-hidden">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="zoom-in">
+      <div class="section-heading mb-3">All Your Tools, One Place</div>
+      <p class="text-muted fs-5">Everything modern shops need, powered by automation & AI-driven insights.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="60">
+        <div class="card card-feature h-100 shadow border-0 p-4">
+          <img src="{% static 'shop/icons/crm.svg' %}" alt="CRM" width="52" class="mb-3">
+          <h5 class="fw-bold mb-2">AI CRM & Lead Analytics</h5>
+          <p>Visualize pipelines, automate contact nurturing, and close faster with actionable AI suggestions.</p>
+          <span class="badge rounded-pill bg-primary-soft text-primary">Automation</span>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="150">
+        <div class="card card-feature h-100 shadow border-0 p-4">
+          <img src="{% static 'shop/icons/invoice.svg' %}" alt="Invoicing" width="52" class="mb-3">
+          <h5 class="fw-bold mb-2">Realtime Invoicing</h5>
+          <p>Branded invoices, reminders, QR payments—fully automated and legally compliant.</p>
+          <span class="badge rounded-pill bg-primary-soft text-primary">Finance</span>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="250">
+        <div class="card card-feature h-100 shadow border-0 p-4">
+          <img src="{% static 'shop/icons/marketing.svg' %}" alt="Marketing" width="52" class="mb-3">
+          <h5 class="fw-bold mb-2">Automated Marketing</h5>
+          <p>Email, WhatsApp, and SMS built in. Track conversions, optimize campaigns with trend AI.</p>
+          <span class="badge rounded-pill bg-primary-soft text-primary">Marketing</span>
+        </div>
+      </div>
+    </div>
+    <div class="row g-4 mt-2">
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="card card-feature h-100 shadow border-0 p-4">
+          <img src="{% static 'shop/icons/support.svg' %}" alt="Support" width="52" class="mb-3">
+          <h5 class="fw-bold mb-2">Multi-channel Support</h5>
+          <p>Chat, WhatsApp, and tickets—all in one inbox. Set SLAs, rating & customer histories.</p>
+          <span class="badge rounded-pill bg-primary-soft text-primary">Helpdesk</span>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="180">
+        <div class="card card-feature h-100 shadow border-0 p-4">
+          <img src="{% static 'shop/icons/analytics.svg' %}" alt="Analytics" width="52" class="mb-3">
+          <h5 class="fw-bold mb-2">Unified Analytics & Reports</h5>
+          <p>Charts, KPIs and deep-dive downloadable insights for growth, sales & retention.</p>
+          <span class="badge rounded-pill bg-primary-soft text-primary">Insights</span>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="260">
+        <div class="card card-feature h-100 shadow border-0 p-4">
+          <img src="{% static 'shop/icons/integration.svg' %}" alt="Integration" width="52" class="mb-3">
+          <h5 class="fw-bold mb-2">App Market & APIs</h5>
+          <p>Integrate gateways, shipping, eCommerce apps—no code and developer APIs for power users.</p>
+          <span class="badge rounded-pill bg-primary-soft text-primary">Integration</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Getting Started Stepper with AOS -->
+<section class="py-6 fade-gradient-bg">
+  <div class="container">
+    <div class="section-heading text-center mb-5" data-aos="zoom-in">Getting Started: It's This Easy</div>
+    <div class="row justify-content-center align-items-center">
+      <div class="col-md-8">
+        <div class="d-flex flex-row align-items-center justify-content-between flex-wrap shadow-soft bg-white py-4 px-2 px-md-5 rounded-pill">
+          <div class="text-center" data-aos="fade-up" data-aos-delay="0">
+            <div class="fs-2 fw-bold"><i class="bi bi-person-lines-fill text-primary"></i></div>
+            <div class="fs-6 mt-1">Create Account</div>
+          </div>
+          <i class="bi bi-arrow-right fs-2 text-primary"></i>
+          <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+            <div class="fs-2 fw-bold"><i class="bi bi-gear-wide-connected text-success"></i></div>
+            <div class="fs-6 mt-1">Setup in 3 Min</div>
+          </div>
+          <i class="bi bi-arrow-right fs-2 text-primary"></i>
+          <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+            <div class="fs-2 fw-bold"><i class="bi bi-bar-chart-steps text-info"></i></div>
+            <div class="fs-6 mt-1">Grow Business</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Case Studies Section, Fade In Cards -->
+<section id="customers" class="py-6 bg-white">
+  <div class="container">
+    <div class="section-heading text-center mb-5" data-aos="zoom-in">Success Stories</div>
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="card testimonial-card shadow-soft border-0 p-4">
+          <img src="{% static 'shop/images/user1.jpg' %}" class="rounded-circle mb-3" width="56" alt="User">
+          <h5 class="fw-bold">Grocery Mart</h5>
+          <div class="text-muted mb-2">Doubled their online sales, cut manual work by 70%</div>
+          <blockquote class="blockquote fs-6 mb-2">"All-in-one dashboard is game-changing. We grew so much in under 6 months."</blockquote>
+          <footer class="blockquote-footer">A. Sharma</footer>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="card testimonial-card shadow-soft border-0 p-4">
+          <img src="{% static 'shop/images/user2.jpg' %}" class="rounded-circle mb-3" width="56" alt="User">
+          <h5 class="fw-bold">Textile Shop</h5>
+          <div class="text-muted mb-2">Faster delivery, happier customers!</div>
+          <blockquote class="blockquote fs-6 mb-2">"Their support is always there; really easy to train the staff!"</blockquote>
+          <footer class="blockquote-footer">Priya K.</footer>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="card testimonial-card shadow-soft border-0 p-4">
+          <img src="{% static 'shop/images/user3.jpg' %}" class="rounded-circle mb-3" width="56" alt="User">
+          <h5 class="fw-bold">HealthCare Plus</h5>
+          <div class="text-muted mb-2">Integrated all services, 24/7 uptime</div>
+          <blockquote class="blockquote fs-6 mb-2">"Invoices, appointments, marketing—all so simple now."</blockquote>
+          <footer class="blockquote-footer">Dr. S. Singh</footer>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Animated Pricing Cards (Yearly toggle) -->
+<section id="plans" class="py-6 position-relative fade-gradient-bg">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="section-heading">Simple, Transparent Pricing</div>
+      <p class="text-muted fs-5">Upgrade anytime. 7-day free trial on all plans.</p>
+    </div>
+    <div class="d-flex justify-content-center mb-4">
+      <div class="btn-group" role="group" aria-label="Billing toggle">
+        <button class="btn btn-outline-primary active" id="billing-month">Monthly</button>
+        <button class="btn btn-outline-primary" id="billing-year">Yearly <span class="badge bg-success ms-1">Save 18%</span></button>
+      </div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-3 g-5" id="pricing-plans">
+      <div class="col" data-aos="fade-up" data-aos-delay="0">
+        <div class="card border-0 h-100 shadow-soft pricing-card">
+          <div class="card-body text-center p-4">
+            <span class="badge bg-primary-soft text-primary mb-3">Starter</span>
+            <h3 class="fw-bold mb-2">Free</h3>
+            <div class="mb-4 text-muted">Essentials for individuals</div>
+            <ul class="list-unstyled mb-4">
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success"></i> Core CRM & Support</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success"></i> 5 Email Campaigns/mo</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success"></i> 5 Invoices/mo</li>
+              <li class="mb-2"><i class="bi bi-x-circle-fill text-danger"></i> Analytics Reports</li>
+            </ul>
+            <a href="/signup/" class="btn btn-outline-primary w-100 btn-modern">Sign Up</a>
+          </div>
+        </div>
+      </div>
+      <div class="col" data-aos="fade-up" data-aos-delay="120">
+        <div class="card border-2 border-primary shadow-lg pricing-card bg-white position-relative overflow-hidden h-100">
+          <div class="featured-plan-badge position-absolute end-0 top-0 mt-3 me-3">Best Value</div>
+          <div class="card-body text-center p-4">
+            <span class="badge bg-primary text-white mb-3">Business</span>
+            <h3 class="fw-bold mb-2 price-business">₹499<span class="fs-6 fw-normal">/mo</span></h3>
+            <div class="mb-4 text-muted">For teams & scaling companies</div>
+            <ul class="list-unstyled mb-4">
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success"></i> Unlimited CRM & Support</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success"></i> Unlimited Invoices</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success"></i> Marketing & Analytics</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success"></i> Integrations & Export</li>
+            </ul>
+            <a href="/signup/?plan=business" class="btn btn-primary w-100 btn-modern">Start Free Trial</a>
+          </div>
+        </div>
+      </div>
+      <div class="col" data-aos="fade-up" data-aos-delay="200">
+        <div class="card border-0 h-100 shadow-soft pricing-card">
+          <div class="card-body text-center p-4">
+            <span class="badge bg-primary-soft text-primary mb-3">Enterprise</span>
+            <h3 class="fw-bold mb-2">Contact Us</h3>
+            <div class="mb-4 text-muted">For large & custom needs</div>
+            <ul class="list-unstyled mb-4">
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success"></i> All Business Features</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success"></i> White-label & SLA</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success"></i> Dedicated Onboarding</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success"></i> Priority Support</li>
+            </ul>
+            <a href="/contact/" class="btn btn-outline-primary w-100 btn-modern">Contact Sales</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Price toggle animation
+      document.addEventListener('DOMContentLoaded',function(){
+        const monthBtn=document.getElementById('billing-month');
+        const yearBtn=document.getElementById('billing-year');
+        const priceBusiness=document.querySelector('.price-business');
+        let monthly=true;
+        monthBtn.onclick=function(){
+          priceBusiness.innerHTML='₹499<span class="fs-6 fw-normal">/mo</span>';
+          this.classList.add('active');yearBtn.classList.remove('active');
+        };
+        yearBtn.onclick=function(){
+          priceBusiness.innerHTML='₹490<span class="fs-6 fw-normal">/mo</span> <span class="text-success fs-6">(billed yearly)</span>';
+          this.classList.add('active');monthBtn.classList.remove('active');
+        };
+      });
+    </script>
+  </div>
+</section>
+
+<!-- Blog/Resources Highlights -->
+<section class="py-6 bg-white fade-gradient-bg" id="resources">
+  <div class="container">
+    <div class="section-heading text-center mb-5" data-aos="zoom-in">From Our Resources</div>
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-4" data-aos="fade-up">
+        <div class="card shadow-soft border-0 h-100">
+          <img src="{% static 'shop/images/blog1.jpg' %}" class="card-img-top" alt="Blog 1">
+          <div class="card-body">
+            <h5 class="fw-bold mb-2">Best CRM Strategies for Small Shops</h5>
+            <p class="text-muted mb-3">How local stores can implement modern CRM to double repeat business.</p>
+            <a href="#" class="stretched-link text-primary fw-bold">Read More <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="120">
+        <div class="card shadow-soft border-0 h-100">
+          <img src="{% static 'shop/images/blog2.jpg' %}" class="card-img-top" alt="Blog 2">
+          <div class="card-body">
+            <h5 class="fw-bold mb-2">Automating Everyday Business Tasks</h5>
+            <p class="text-muted mb-3">Save 10+ hours weekly: automation examples for Indian shopkeepers.</p>
+            <a href="#" class="stretched-link text-primary fw-bold">Read More <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="240">
+        <div class="card shadow-soft border-0 h-100">
+          <img src="{% static 'shop/images/blog3.jpg' %}" class="card-img-top" alt="Blog 3">
+          <div class="card-body">
+            <h5 class="fw-bold mb-2">How Our AI Learns Your Customers</h5>
+            <p class="text-muted mb-3">Behind-the-scenes on features that grow with your business over time.</p>
+            <a href="#" class="stretched-link text-primary fw-bold">Read More <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section, Animated Accordion -->
+<section id="faq" class="py-6 fade-gradient-bg">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="section-heading">Frequently Asked Questions</div>
+      <p class="text-muted fs-5">Want more details? We’ve got you covered.</p>
+    </div>
+    <div class="accordion accordion-flush" id="faqAccordion">
+      <div class="accordion-item" data-aos="fade-up" data-aos-delay="0">
+        <h2 class="accordion-header" id="faqHeadingOne">
+          <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faqOne">
+            <span class="faq-icon me-2 bi bi-chevron-right"></span>What is Etawah Shops Market?
+          </button>
+        </h2>
+        <div id="faqOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">Your one-stop suite for managing sales, marketing, invoicing, support, and analytics.</div>
+        </div>
+      </div>
+      <div class="accordion-item" data-aos="fade-up" data-aos-delay="60">
+        <h2 class="accordion-header" id="faqHeadingTwo">
+          <button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqTwo">
+            <span class="faq-icon me-2 bi bi-chevron-right"></span>Is there a free trial?
+          </button>
+        </h2>
+        <div id="faqTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">Yes! Get started with a week’s full-featured free trial—no credit card required.</div>
+        </div>
+      </div>
+      <div class="accordion-item" data-aos="fade-up" data-aos-delay="120">
+        <h2 class="accordion-header" id="faqHeadingThree">
+          <button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqThree">
+            <span class="faq-icon me-2 bi bi-chevron-right"></span>Is my business data secure?
+          </button>
+        </h2>
+        <div id="faqThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">Protected with industry-grade encryption, secure cloud hosting, and 24/7 monitoring.</div>
+        </div>
+      </div>
+      <div class="accordion-item" data-aos="fade-up" data-aos-delay="180">
+        <h2 class="accordion-header" id="faqHeadingFour">
+          <button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqFour">
+            <span class="faq-icon me-2 bi bi-chevron-right"></span>How do I get support?
+          </button>
+        </h2>
+        <div id="faqFour" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">Our support team is 24/7 via chat, WhatsApp, calls or email—whichever you prefer!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Floating Call-To-Action button -->
+<a href="/signup/" class="cta-floating shadow-soft d-none d-md-block" data-aos="fade-left" data-aos-delay="180">Try for Free</a>
+
+<!-- Footer Section -->
+<footer class="py-5 bg-dark text-white-50">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-4 mb-3 mb-md-0">
+        <img src="{% static 'shop/images/logo.svg' %}" width="36" class="me-2" alt="Logo">
+        Etawah Shops Market &copy; {% now "Y" %}
+      </div>
+      <div class="col-md-4 text-center mb-3 mb-md-0">
+        <a href="#" class="text-white-50 me-3">Privacy Policy</a>
+        <a href="#" class="text-white-50 me-3">Terms</a>
+        <a href="#" class="text-white-50">Contact</a>
+      </div>
+      <div class="col-md-4 text-end">
+        <a href="#" class="text-white-50 me-2"><i class="bi bi-twitter"></i></a>
+        <a href="#" class="text-white-50 me-2"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="text-white-50"><i class="bi bi-instagram"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.6/lottie.min.js"></script>
+<script>
+  // Animate numbers in hero
+  document.addEventListener('DOMContentLoaded', function(){
+    AOS.init({once:true});
+    document.querySelectorAll('.hero-num').forEach(function(el){
+      let max=+el.dataset.amount,c=0,speed=12;
+      let step = Math.ceil(max/40);
+      function update(){
+        c+=step;if(c>max)c=max;
+        el.innerText=c;
+        if(c<max)setTimeout(update,speed);
+      }
+      update();
+    });
+  });
+</script>
+{% endblock %}
+```
+
+
+***
+
+- This code brings together modern design, advanced interactivity, and animation best practices.[^2][^3][^1]
+- Swap image/Lottie asset paths as needed and expand content further for your exact needs.
+- For more animation (e.g., parallax, confetti, morphing SVGs), consider advanced libraries or additional custom JS as desired.
+
+This implementation gives a beautiful, highly interactive SaaS homepage ready for production and deep exploration by users.Here is a comprehensive HTML template that embodies the latest SaaS best practices for 2025: more content-rich sections, modern color schemes, enhanced interactivity, and tasteful animations using AOS (Animate On Scroll) and Lottie for SVG motion. This file can be plugged into your Django project and easily adapted for your assets:[^3][^1][^2]
+
+```html
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block extra_head %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+<style>
+body {background: #f5f8fe;}
+.hero-lottie {max-width:500px;}
+.card-feature {border-radius:1.3rem;transition: box-shadow 0.23s,transform 0.23s;}
+.card-feature:hover{box-shadow:0 12px 40px #bbb8fa30;transform:translateY(-4px) scale(1.04);}
+.cta-glow{animation:pulseGlow 1.8s infinite alternate;}
+@keyframes pulseGlow{0%{filter:brightness(1.1);}100%{filter:brightness(1.4);}}
+.float-action-btn {position:fixed;bottom:28px;right:28px;z-index:2000;background:linear-gradient(90deg,#6a11cb 0,#2575fc 100%);color:#fff;padding:1.1rem 2.5rem;font-weight:700;border-radius:2.2rem;box-shadow:0 8px 32px rgba(120,100,220,0.15);}
+.pricing-card{border-radius:1.2rem;}
+.bg-gradient-fade{background:linear-gradient(90deg,#f9fafd 40%, #e3e6ee 100%);}
+.section-heading{font-size:2.2rem;font-weight:900;}
+::-webkit-scrollbar-thumb{background:#e1eafd;}
+</style>
+{% endblock %}
+{% block content %}
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow py-3">
+  <div class="container"><a class="navbar-brand" href="/"><img src="{% static 'shop/images/logo.svg' %}" alt="Logo" width="36" class="me-2">Etawah Shops Market</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav gap-3 align-items-center">
+        <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+        <li class="nav-item"><a class="nav-link" href="#plans">Plans</a></li>
+        <li class="nav-item"><a class="nav-link" href="#testimonials">Clients</a></li>
+        <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+        <li class="nav-item"><a href="/signup/" class="btn btn-primary rounded-pill px-4 ms-2 fw-bold">Try Free</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section Modern -->
+<section class="py-6 hero-bg-animated" style="background:linear-gradient(120deg,#a18cd1 0,#fbc2eb 100%)">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 text-white" data-aos="fade-right">
+        <h1 class="display-2 fw-bold mb-3">Grow <span class="text-primary">Your Shop</span> Online</h1>
+        <p class="lead">All-in-one platform: automation, analytics, CRM, billing & multi-channel support. Beautiful, fast and secure.</p>
+        <div class="d-flex gap-3 pt-4"><a href="#features" class="btn btn-light btn-lg rounded-pill">Get Started</a>
+        <a href="#plans" class="btn btn-outline-light btn-lg rounded-pill">Plans</a></div>
+        <div class="mt-5 d-flex gap-5">
+          <div>
+            <span class="display-6 fw-bold text-primary"><span class="hero-count" data-count="10420">0</span>+</span><br><span class="text-white-50">Active Users</span>
+          </div>
+          <div>
+            <span class="display-6 fw-bold text-primary"><span class="hero-count" data-count="510">0</span>+</span><br><span class="text-white-50">Businesses</span>
+          </div>
+          <div>
+            <span class="display-6 fw-bold text-primary">99.9%</span><br><span class="text-white-50">Uptime</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 text-center pt-5 pt-lg-0" data-aos="fade-left">
+        <div id="lottie-hero" class="mx-auto hero-lottie"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Partner/Client Logos Marquee -->
+<section class="py-3 bg-gradient-fade border-bottom">
+  <div class="container d-flex gap-4 overflow-auto" style="--bs-gutter-x:3rem;">
+    <img src="{% static 'shop/images/logo1.png' %}" alt="Logo1" height="40" class="opacity-75" data-aos="fade-up">
+    <img src="{% static 'shop/images/logo2.png' %}" alt="Logo2" height="40" class="opacity-75" data-aos="fade-up" data-aos-delay="80">
+    <img src="{% static 'shop/images/logo3.png' %}" alt="Logo3" height="40" class="opacity-75" data-aos="fade-up" data-aos-delay="120">
+    <img src="{% static 'shop/images/logo4.png' %}" alt="Logo4" height="40" class="opacity-75" data-aos="fade-up" data-aos-delay="200">
+    <img src="{% static 'shop/images/logo5.png' %}" alt="Logo5" height="40" class="opacity-75" data-aos="fade-up" data-aos-delay="240">
+  </div>
+</section>
+
+<!-- Features Grid (with more content) -->
+<section id="features" class="py-6 bg-white">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="zoom-in">
+      <div class="section-heading mb-2">Everything a Modern Business Needs</div>
+      <div class="text-muted fs-5">Automation, insights, support, marketing and finance – integrated with advanced AI.</div>
+    </div>
+    <div class="row g-4 mb-4">
+      <div class="col-md-4" data-aos="fade-up">
+        <div class="card card-feature h-100 p-4 border-0 shadow-soft bg-white">
+          <img src="{% static 'shop/icons/crm.svg' %}" class="mb-3" width="56" /><h5 class="fw-bold mb-2">AI CRM</h5>
+          <p>Lead scoring, automated reminders, one-click calls, customer timelines and smart segmentation.</p>
+          <span class="badge bg-primary-soft text-primary rounded-pill">Smart Sales</span>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="90">
+        <div class="card card-feature h-100 p-4 border-0 shadow-soft bg-white">
+          <img src="{% static 'shop/icons/invoice.svg' %}" class="mb-3" width="56" /><h5 class="fw-bold mb-2">Instant Billing</h5>
+          <p>QR and UPI invoicing, GST compliant, automatic receipts and payment status monitoring.</p>
+          <span class="badge bg-success-soft text-success rounded-pill">Finance</span>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="180">
+        <div class="card card-feature h-100 p-4 border-0 shadow-soft bg-white">
+          <img src="{% static 'shop/icons/marketing.svg' %}" class="mb-3" width="56" /><h5 class="fw-bold mb-2">Multi-channel Marketing</h5>
+          <p>Drag-drop templates for WhatsApp, Email and SMS. A/B testing & engagement analytics built-in.</p>
+          <span class="badge bg-warning-soft text-warning rounded-pill">Reach</span>
+        </div>
+      </div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="10">
+        <div class="card card-feature h-100 p-4 border-0 shadow-soft bg-white">
+          <img src="{% static 'shop/icons/support.svg' %}" class="mb-3" width="56" /><h5 class="fw-bold mb-2">Unified Support</h5>
+          <p>One inbox for WhatsApp, chat and tickets. SLA automations and customer rating analytics.</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="120">
+        <div class="card card-feature h-100 p-4 border-0 shadow-soft bg-white">
+          <img src="{% static 'shop/icons/analytics.svg' %}" class="mb-3" width="56" /><h5 class="fw-bold mb-2">Analytics & Dashboards</h5>
+          <p>Live dashboards, deep-dive insights, KPI alerts, exportable XLS/CSV and custom reporting.</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="230">
+        <div class="card card-feature h-100 p-4 border-0 shadow-soft bg-white">
+          <img src="{% static 'shop/icons/integration.svg' %}" class="mb-3" width="56" /><h5 class="fw-bold mb-2">App Integrations</h5>
+          <p>Plug in eCom, shipping, warehouse, and marketing apps in one click. API access for power users.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Blog/Resource Highlights -->
+<section class="py-6 bg-gradient-fade" id="resources">
+  <div class="container">
+    <h3 class="section-heading text-center mb-4" data-aos="zoom-in">From Our Resource Center</h3>
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-4" data-aos="fade-up"><div class="card shadow-soft border-0 h-100"><img src="{% static 'shop/images/blog1.jpg' %}" class="card-img-top"><div class="card-body"><h5 class="fw-bold mb-2">Boost Your Repeat Business</h5><p>CRM secrets for shops – practical step-by-step upgrades any small shop can implement.</p><a href="#" class="stretched-link text-primary fw-bold">Read More <i class="bi bi-arrow-right"></i></a></div></div></div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="120"><div class="card shadow-soft border-0 h-100"><img src="{% static 'shop/images/blog2.jpg' %}" class="card-img-top"><div class="card-body"><h5 class="fw-bold mb-2">Real Automation Wins</h5><p>See how Indian shopkeepers save 10+ hours per week via business automation.</p><a href="#" class="stretched-link text-primary fw-bold">Read More <i class="bi bi-arrow-right"></i></a></div></div></div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="240"><div class="card shadow-soft border-0 h-100"><img src="{% static 'shop/images/blog3.jpg' %}" class="card-img-top"><div class="card-body"><h5 class="fw-bold mb-2">Behind the Scenes AI</h5><p>How our platform learns and grows with you – personalized features over time.</p><a href="#" class="stretched-link text-primary fw-bold">Read More <i class="bi bi-arrow-right"></i></a></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials/Case Studies Carousel -->
+<section id="testimonials" class="py-6 bg-white">
+  <div class="container">
+    <h3 class="section-heading text-center mb-5" data-aos="zoom-in">What Our Customers Say</h3>
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="fade-up"><div class="card shadow-soft border-0 h-100 p-4"><img src="{% static 'shop/images/user1.jpg' %}" class="rounded-circle mb-3" width="54"><h6 class="fw-bold">Grocery Mart</h6><div class="text-muted mb-2">Doubled sales, 70% less manual work</div><blockquote>"All-in-one dashboard is a game-changer. Grew so much in 6 months."</blockquote></div></div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="80"><div class="card shadow-soft border-0 h-100 p-4"><img src="{% static 'shop/images/user2.jpg' %}" class="rounded-circle mb-3" width="54"><h6 class="fw-bold">Textile Shop</h6><div class="text-muted mb-2">Faster delivery, happier customers!</div><blockquote>"Support is always there—easy for every staff!"</blockquote></div></div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="180"><div class="card shadow-soft border-0 h-100 p-4"><img src="{% static 'shop/images/user3.jpg' %}" class="rounded-circle mb-3" width="54"><h6 class="fw-bold">HealthCare Plus</h6><div class="text-muted mb-2">Integrated, 24/7 uptime</div><blockquote>"Invoices, appointments, marketing—all so simple now."</blockquote></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Beautiful Pricing Table with Animation -->
+<section id="plans" class="py-6 bg-gradient-fade">
+  <div class="container">
+    <h3 class="section-heading text-center mb-4" data-aos="zoom-in">Transparent Pricing, No Surprises</h3>
+    <p class="text-center text-muted mb-5 fs-5">Start free – upgrade when ready. 7-day free trial included.</p>
+    <div class="row row-cols-1 row-cols-md-3 g-5">
+      <div class="col" data-aos="flip-left" data-aos-delay="0">
+        <div class="card pricing-card border-0 h-100 shadow-soft p-4 text-center">
+          <div class="badge bg-primary-soft text-primary mb-3">Starter</div>
+          <h3 class="fw-bold mb-2">Free</h3>
+          <div class="text-muted mb-4">Great for solo shops</div>
+          <ul class="list-unstyled mb-4"><li>CRM & Support</li><li>3 Email Campaigns</li><li>3 Invoices/mo</li><li>No Analytics</li></ul>
+          <a href="/signup/" class="btn btn-outline-primary w-100 rounded-pill">Sign Up</a>
+        </div>
+      </div>
+      <div class="col" data-aos="flip-left" data-aos-delay="80">
+        <div class="card pricing-card border-primary shadow-soft h-100 bg-white border-2 p-4 position-relative">
+          <div class="featured-plan-badge position-absolute end-0 top-0 mt-3 me-3">Best Value</div>
+          <div class="badge bg-primary text-white mb-3">Business</div>
+          <h3 class="fw-bold mb-2 price-business">₹499<span class="fs-6 fw-normal">/mo</span></h3>
+          <div class="text-muted mb-4">For teams & growing shops</div>
+          <ul class="list-unstyled mb-4"><li>Unlimited CRM</li><li>Unlimited Invoices</li><li>Full Analytics & Export</li><li>All Integrations</li></ul>
+          <a href="/signup/?plan=business" class="btn btn-primary w-100 rounded-pill">Start Free Trial</a>
+        </div>
+      </div>
+      <div class="col" data-aos="flip-left" data-aos-delay="180">
+        <div class="card pricing-card border-0 h-100 shadow-soft p-4 text-center">
+          <div class="badge bg-primary-soft text-primary mb-3">Enterprise</div>
+          <h3 class="fw-bold mb-2">Contact</h3>
+          <div class="text-muted mb-4">Custom/large needs</div>
+          <ul class="list-unstyled mb-4"><li>All in Business Plan</li><li>Priority Support</li><li>SLAs</li><li>Custom Onboarding</li></ul>
+          <a href="/contact/" class="btn btn-outline-primary w-100 rounded-pill">Contact Sales</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ animated accordion -->
+<section id="faq" class="py-6 bg-white">
+  <div class="container">
+    <h3 class="section-heading text-center mb-5">Frequently Asked Questions</h3>
+    <div class="accordion accordion-flush" id="faqAccordion">
+      <div class="accordion-item" data-aos="fade-up">
+        <h2 class="accordion-header" id="faqHeadingOne">
+          <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faqOne">What is Etawah Shops Market?</button></h2>
+        <div id="faqOne" class="accordion-collapse collapse show"  data-bs-parent="#faqAccordion"><div class="accordion-body">A unified suite for management, billing, campaigns, analytics and support – all in one cloud system.</div></div>
+      </div>
+      <div class="accordion-item" data-aos="fade-up" data-aos-delay="90">
+        <h2 class="accordion-header" id="faqHeadingTwo">
+          <button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqTwo">Free trial available?</button></h2>
+        <div id="faqTwo" class="accordion-collapse collapse"  data-bs-parent="#faqAccordion"><div class="accordion-body">Yes! 7 days, full features, no card required.</div></div>
+      </div>
+      <div class="accordion-item" data-aos="fade-up" data-aos-delay="180">
+        <h2 class="accordion-header" id="faqHeadingThree">
+          <button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqThree">How about security?</button></h2>
+        <div id="faqThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Enterprise-grade encryption, protected cloud, frequent audits and backups.</div></div>
+      </div>
+      <div class="accordion-item" data-aos="fade-up" data-aos-delay="240">
+        <h2 class="accordion-header" id="faqHeadingFour">
+          <button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqFour">How do I get support?</button></h2>
+        <div id="faqFour" class="accordion-collapse collapse"  data-bs-parent="#faqAccordion"><div class="accordion-body">Phone, WhatsApp, or email—response within minutes, 24/7.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Floating CTA Button -->
+<a href="/signup/" class="float-action-btn cta-glow d-none d-md-block"><i class="bi bi-rocket-takeoff me-2"></i>Start Your Free Trial</a>
+
+<!-- Footer -->
+<footer class="py-5 bg-dark text-white-50">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-4 mb-3 mb-md-0"><img src="{% static 'shop/images/logo.svg' %}" width="36" class="me-2">Etawah Shops Market &copy; {% now "Y" %}</div>
+      <div class="col-md-4 text-center mb-3 mb-md-0"><a href="#" class="text-white-50 me-3">Privacy</a><a href="#" class="text-white-50 me-3">Terms</a><a href="#" class="text-white-50">Contact</a></div>
+      <div class="col-md-4 text-end"><a href="#" class="text-white-50 me-2"><i class="bi bi-twitter"></i></a><a href="#" class="text-white-50 me-2"><i class="bi bi-facebook"></i></a><a href="#" class="text-white-50"><i class="bi bi-instagram"></i></a></div>
+    </div>
+  </div>
+</footer>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.6/lottie.min.js"></script>
+<script>
+// Animated number counters
+document.addEventListener('DOMContentLoaded', function(){
+  AOS.init({once:true});
+  document.querySelectorAll('.hero-count').forEach(function(el){
+    let max=+el.dataset.count,c=0,step=Math.ceil(max/28),intv;
+    function update(){if(c<max){c+=step;if(c>max)c=max;el.textContent=c;setTimeout(update,11);}}
+    update();
+  });
+  // Lottie hero animation
+  if(window.lottie){
+    lottie.loadAnimation({
+      container:document.getElementById('lottie-hero'),
+      renderer:'svg',loop:true,autoplay:true,
+      path:"{% static 'shop/lottie/saas-dashboard.json' %}"
+    });
+  }
+});
+</script>
+{% endblock %}
+```
+
+This template gives you modern gradient backgrounds, animations, rich features, testimonials, blog, sticky CTA, beautiful forms, dynamic effects, and a clean responsive design — optimized to deeply engage new users.[^1][^2][^3]
+
+<div align="center">⁂</div>
+
+[^1]: https://www.marketermilk.com/blog/best-saas-websites
+
+[^2]: https://www.beetlebeetle.com/post/saas-website-inspiration-2025
+
+[^3]: https://www.soliddigital.com/blog/5-saas-websites-nailing-subtle-animations-without-overdoing-it
+
