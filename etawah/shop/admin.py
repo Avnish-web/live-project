@@ -1,5 +1,6 @@
 from django.contrib import admin 
 from .models import Feature, PricingPlan
+from .models import Shop
 
 admin.site.register(Feature)
 admin.site.register(PricingPlan)

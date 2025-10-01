@@ -2,6 +2,6 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('backend/', admin.site.urls),
-    path('', include('shop.urls')),  # Include the app URLs
+    path('admin/', admin.site.urls),
+    path('', include('shop.urls')),  # include your app routes
 ]
