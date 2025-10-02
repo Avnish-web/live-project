@@ -23,7 +23,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // ANIMATE ON SCROLL (AOS)
     // ===============================
     if (typeof AOS !== "undefined") {
-        AOS.init({ once: true });
+        AOS.init({ 
+            duration: 800,
+            once: true,
+        });
     } else {
         console.warn("AOS library not found.");
     }
