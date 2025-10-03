@@ -1,128 +1,247 @@
-/* Light Purple from gradient 
-*/
-:root {
-    --bs-primary: #a18cd1; 
-    --bs-primary-rgb: 161, 140, 209;
+/* ========================================
+   ETAWAH SHOPS MARKET – style.css
+   Modern, fast, hero-visible, animation-optimized
+   ======================================== */
+
+/* ===== Base Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    background: #f9fafd; /* Light background for contrast */
-    scroll-behavior: smooth;
-    color: #333;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+  color: #1e293b;
+  background-color: #f8fafc;
+  overflow-x: hidden;
 }
 
-/* Typography Utilities */
-.section-heading {
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
-    font-weight: 800;
-    letter-spacing: -1px;
+/* ===== HERO SECTION – GUARANTEED VISIBLE ===== */
+.hero-bg-animated {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(120deg, #4f46e5, #7c3aed);
+  color: white;
+  padding: 2rem 1rem;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
 }
 
-/* Soft Shadow Utility */
-.shadow-soft {
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+.hero-bg-animated::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.08);
+  z-index: 1;
 }
 
+.hero-bg-animated .container {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+}
+
+.hero-bg-animated h1 {
+  font-size: 3.2rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.hero-bg-animated p.lead {
+  font-size: 1.25rem;
+  max-width: 650px;
+  margin: 0 auto 2rem;
+  opacity: 0.95;
+}
+
+/* Lottie container */
+.lottie-hero {
+  width: 100%;
+  max-width: 500px;
+  height: 400px;
+  margin: 2rem auto 0;
+}
+
+/* Hero stats */
+.hero-number {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: white;
+}
+.hero-number + div {
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+/* ===== MODERN BUTTONS ===== */
 .btn-modern {
-    border-radius: 2rem;
-    font-weight: 600;
-    transition: all 0.3s;
+  font-weight: 600;
+  border-radius: 2rem;
+  padding: 0.75rem 2rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
-/* Floating CTA Button */
+/* Primary */
+.btn-modern.btn-primary {
+  background: linear-gradient(90deg, #6366f1, #818cf8);
+  color: white !important;
+  border: none;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+}
+.btn-modern.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(99, 102, 241, 0.35);
+}
+
+/* Outline Light (for hero) */
+.btn-modern.btn-outline-light {
+  background: transparent;
+  border: 2px solid white;
+  color: white !important;
+}
+.btn-modern.btn-outline-light:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Light (for hero primary) */
+.btn-modern.btn-light {
+  background: white;
+  color: #6366f1 !important;
+  font-weight: 700;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+}
+.btn-modern.btn-light:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+}
+
+/* Outline Primary (global) */
+.btn-modern.btn-outline-primary {
+  background: transparent;
+  color: #6366f1 !important;
+  border: 2px solid #c7d2fe;
+}
+.btn-modern.btn-outline-primary:hover {
+  background: rgba(99, 102, 241, 0.1);
+  border-color: #818cf8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(99, 102, 241, 0.12);
+}
+
+/* ===== PRICING CARDS ===== */
+.pricing-card {
+  background: white;
+  border-radius: 1.25rem;
+  padding: 2rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+  height: 100%;
+}
+.pricing-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Pricing buttons */
+.pricing-card .btn-modern {
+  padding: 0.65rem 1.5rem;
+  font-size: 0.95rem;
+}
+
+/* ===== FLOATING CTA ===== */
 .cta-floating {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    z-index: 1000;
-    background: linear-gradient(90deg, #ffb6b6, #7ee8fa);
-    color: #111;
-    padding: 0.8rem 2.5rem;
-    font-weight: 700;
-    border-radius: 2.5rem;
-    box-shadow: 0 6px 28px rgba(80, 74, 135, 0.2);
-    animation: pulseCta 2s infinite alternate;
-    transition: filter .3s, transform .3s;
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  background: linear-gradient(135deg, #8b5cf6, #6366f1);
+  color: white;
+  font-weight: 700;
+  padding: 0.8rem 2.2rem;
+  border-radius: 2.5rem;
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.35);
+  animation: pulseCta 1.2s ease-in-out infinite alternate;
+  transition: transform 0.15s, box-shadow 0.15s;
+  text-decoration: none;
+  display: inline-block;
 }
 .cta-floating:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 36px rgba(80, 74, 135, 0.3);
+  transform: scale(1.04) translateY(-2px);
+  box-shadow: 0 10px 28px rgba(139, 92, 246, 0.45);
 }
+
 @keyframes pulseCta {
-    from { opacity: 0.9; }
-    to   { opacity: 1; }
+  from { opacity: 0.94; transform: scale(1); }
+  to   { opacity: 1;   transform: scale(1.02); }
 }
 
-.hero-bg-animated {
-    background: linear-gradient(120deg, #a18cd1, #fbc2eb);
-    background-size: 200% 200%;
-    animation: gradientMove 8s ease-in-out infinite alternate;
-}
-@keyframes gradientMove {
-    0%   { background-position: 0% 50%; }
-    100% { background-position: 100% 50%; }
-}
-
-.lottie-hero {
-    max-width: 440px;
-    margin-inline: auto;
-    display: block;
-}
-.hero-number {
-    font-size: 2.5rem;
-    font-weight: 700;
-    letter-spacing: -2px;
-}
-
-.card-feature {
-    
-    border: 1px solid #eee;
-    border-radius: 1.25rem;
-    background: #fff;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-.card-feature:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 18px 45px rgba(161, 140, 209, 0.25);
-}
-
-.testimonial-card {
-    border-radius: 1.25rem;
-    transition: box-shadow .3s;
-}
-.testimonial-card:hover {
-    box-shadow: 0 10px 40px #a18cd130;
+/* ===== UTILITIES ===== */
+.section-heading {
+  font-size: 2.25rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: #1e293b;
 }
 
 .fade-gradient-bg {
-    background: linear-gradient(180deg, #f9fafd 0, #ebedee 100%);
+  background: linear-gradient(to bottom, #f8fafc, #ffffff);
 }
 
-.integration-icon {
-    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.1));
-    transition: transform 0.3s ease, box-shadow 0.3s;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-}
-.integration-icon:hover {
-    transform: scale(1.15);
-    box-shadow: 0 6px 20px rgba(161, 140, 209, 0.2);
-}
-
-/* FAQ Icon Animation */
-.faq-icon {
-    transition: transform .2s;
-}
-.accordion-button:not(.collapsed) .faq-icon {
-    transform: rotate(90deg);
+.shadow-soft {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
 }
 
 .bg-primary-soft {
-    background-color: rgba(161, 140, 209, 0.15) !important;
+  background-color: #f0f5ff !important;
 }
-.text-primary {
-    color: #a18cd1 !important;
+
+.text-primary-soft {
+  color: #6366f1 !important;
 }
-.border-primary-subtle {
-    border-color: rgba(161, 140, 209, 0.3) !important;
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 992px) {
+  .hero-bg-animated h1 {
+    font-size: 2.5rem;
+  }
+  .lottie-hero {
+    height: 320px;
+  }
+  .hero-number {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .btn-modern {
+    width: 100%;
+    max-width: 300px;
+    margin: 0.5rem auto;
+  }
+  .d-flex.gap-3.justify-content-center.justify-content-lg-start {
+    flex-direction: column;
+    align-items: center;
+  }
+  .cta-floating {
+    bottom: 16px;
+    right: 16px;
+    padding: 0.7rem 1.8rem;
+    font-size: 0.95rem;
+  }
 }

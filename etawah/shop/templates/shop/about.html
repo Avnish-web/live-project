@@ -3,476 +3,467 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Etawah Digital Market Platform</title>
-    
-    <!-- Load Tailwind CSS CDN for utility classes -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Lucide Icons for high-contrast interface elements -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    
-</head>
-
-<body class="antialiased text-white">
-
-    <!-- Start of Sticky Header/Navigation Section -->
-    <header class="sticky top-0 z-50 glass-header border-b border-neon-blue/20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+    <title>About etawah.shop.in - Your Local Business Directory</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a3a6c;
+            --secondary: #e63946;
+            --accent: #457b9d;
+            --light: #f1faee;
+            --dark: #1d3557;
+            --gray: #8d99ae;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .domain {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+        
+        .location {
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .search-bar {
+            max-width: 600px;
+            margin: 1.5rem auto 0;
+        }
+        
+        .search-input {
+            border: none;
+            border-radius: 30px;
+            padding: 0.8rem 1.5rem;
+            width: 100%;
+            font-size: 1.1rem;
+        }
+        
+        .btn-list {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 0.6rem 1.8rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-list:hover {
+            background-color: #c1121f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary);
+            margin-bottom: 2.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        .card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+        }
+        
+        .card-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .card-icon i {
+            font-size: 28px;
+            color: white;
+        }
+        
+        .card-title {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .mission-vision {
+            background-color: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .mission-box, .vision-box {
+            background: linear-gradient(135deg, rgba(26, 58, 108, 0.05), rgba(69, 123, 157, 0.05));
+            padding: 1.8rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .mission-title, .vision-title {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .mission-title i, .vision-title i {
+            margin-right: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .network-info {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+        
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-title {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+        
+        .footer-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--secondary);
+        }
+        
+        .footer-links a {
+            color: #e9ecef;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.6rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #a9a9a9;
+        }
+        
+        .disclaimer {
+            font-size: 0.85rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #a9a9a9;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, rgba(230, 57, 70, 0.15), transparent);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        
+        .btn-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .btn-link:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.2rem;
+            }
             
-            <!-- Logo with Neon Flicker Effect -->
-            <div class="flex items-center space-x-3">
-                <i data-lucide="store" class="text-neon-blue w-7 h-7 animate-flicker"></i>
-                <span class="text-2xl font-black text-white tracking-widest neon-text/90">ET-DIGITAL</span>
+            .section {
+                padding: 2.5rem 0;
+            }
+            
+            .mission-vision {
+                padding: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo">ETAWAH ONLINE</div>
+                <div class="domain">www.etawah.shop.in</div>
+                <div class="location">Etawah (UP)</div>
             </div>
             
-            <!-- Navigation Links (Desktop) -->
-            <nav class="hidden md:flex space-x-8 text-base font-semibold text-text-faded">
-                <a href="#features" class="hover:text-neon-green transition duration-300 border-b-2 border-transparent hover:border-neon-green/50 pb-1">Features</a>
-                <a href="#timeline" class="hover:text-neon-green transition duration-300 border-b-2 border-transparent hover:border-neon-green/50 pb-1">Activation</a>
-                <a href="#success" class="hover:text-neon-green transition duration-300 border-b-2 border-transparent hover:border-neon-green/50 pb-1">Testimonials</a>
-                <a href="#pricing" class="hover:text-neon-green transition duration-300 border-b-2 border-transparent hover:border-neon-green/50 pb-1">Pricing Matrix</a>
-            </nav>
+            <div class="search-bar">
+                <input type="text" class="search-input" placeholder="Search in Etawah (UP)">
+            </div>
             
-            <!-- Call to Action Button - High Contrast Neon -->
-            <button id="open-modal-btn-nav" class="hidden md:block cta-button">
-                Activate Portal
-            </button>
+            <div class="text-center">
+                <button class="btn btn-list">
+                    <i class="fas fa-plus-circle me-2"></i>List Your Business Free
+                </button>
+            </div>
         </div>
     </header>
-    <!-- End of Sticky Header/Navigation Section -->
 
-    <main>
-        <!-- 1. HERO SECTION (High-Impact, Cyber-Style Layout) -->
-        <section class="relative pt-24 pb-36 sm:pt-32 sm:pb-48 overflow-hidden">
-            <!-- Background Grid Pattern for Aesthetic -->
-            <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSczMCcgaGVpZ2h0PSczMCcgdmlld0JveD0nMCAwIDMwIDMwJz48ZyBmaWxsPSdub25lJyBmaWxsLW9wYWNpdHk9JzAuMDUnIHN0cm9rZT0nIzEwMTczOCc+PHBhdGggZD0nTS02IDIzbDMwLTMwTTI0IDUzbDMwLTMwTTE5LTdsMzAgMzAnLz48L2c+PC9zdmc+')] opacity-5"></div>
-            
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="lg:grid lg:grid-cols-12 lg:gap-16 items-center">
-                    
-                    <!-- Left Content Block -->
-                    <div class="lg:col-span-7 text-center lg:text-left mb-12 lg:mb-0">
-                        <p class="text-sm font-semibold uppercase text-neon-green mb-3 tracking-widest animate-float">
-                            Next-Generation Retail Command Center
+    <!-- Main Content -->
+    <main class="container">
+        <!-- About Section -->
+        <section class="section">
+            <h2 class="section-title">About www.etawah.shop.in</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="card p-4">
+                        <p class="mb-3">
+                            <span class="highlight">www.etawah.shop.in</span> is a local business directory & information portal for Etawah. 
+                            We help users connect with local businesses in Etawah through verified information about each business like 
+                            phone numbers, contact details, products and services offered etc.
                         </p>
-                        <!-- Main Title with Neon Gradient -->
-                        <h1 class="text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold leading-tight mb-8">
-                            Digitalize Your <span class="neon-text">Etawah Shop</span>. Zero Friction.
-                        </h1>
-                        <p class="text-xl lg:text-2xl text-text-faded mb-12 max-w-xl lg:max-w-none mx-auto">
-                            Leverage AI-driven inventory and instant multi-platform sales synchronization to maximize local reach.
+                        <p>
+                            Our platform serves as a bridge between Etawah residents and local businesses, ensuring accurate and up-to-date 
+                            information is readily available to everyone in the community.
                         </p>
-                        
-                        <!-- Main CTAs -->
-                        <div class="flex flex-col sm:flex-row justify-center lg:justify-start space-y-5 sm:space-y-0 sm:space-x-6">
-                            <button id="hero-cta-btn-main" class="cta-button text-lg">
-                                Launch Simulation
-                            </button>
-                            <a href="#pricing" class="border-2 border-neon-blue text-white font-semibold py-3.5 px-8 rounded-full text-lg transition duration-300 hover:bg-neon-blue/20 hover:border-neon-green/50">
-                                View Data Streams
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <!-- Right Visual/Dashboard Mockup -->
-                    <div class="lg:col-span-5 flex justify-center mt-12 lg:mt-0">
-                        <div class="relative w-full max-w-lg p-6 cyber-card rounded-2xl shadow-neon-md animate-float">
-                            <i data-lucide="monitor" class="w-12 h-12 text-neon-green mb-4"></i>
-                            <h3 class="text-xl font-bold text-white mb-2">Live Status: Operational</h3>
-                            <p class="text-sm text-text-faded">Data Feed Active: 98% Uptime. Local Indexing Complete.</p>
-                            <img src="https://placehold.co/550x350/1E293B/00F0FF?text=REAL-TIME+DASHBOARD" 
-                                 alt="Digital Shop Dashboard Mockup" 
-                                 class="mt-4 rounded-lg ring-2 ring-neon-blue/50 max-w-full h-auto object-cover">
-                        </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- End of Hero Section -->
 
-        <!-- Section Separator -->
-        <div class="section-separator mb-20"></div>
-
-        <!-- 2. CORE FEATURE HIGHLIGHTS (Grid with Cyber-Card Design) -->
-        <section id="features" class="py-20 lg:py-28">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <span class="text-sm font-black uppercase text-neon-blue tracking-widest">System Modules</span>
-                    <h2 class="text-4xl lg:text-5xl font-extrabold mt-2 mb-4">Core <span class="neon-text">Intelligence</span> Suite</h2>
-                    <p class="text-lg text-text-faded max-w-3xl mx-auto">Every tool is engineered for speed, reliability, and automated precision in a competitive market.</p>
+        <!-- Benefits Section -->
+        <section class="section bg-light">
+            <h2 class="section-title">Benefits for Local Businesses in Etawah</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card p-4">
+                        <div class="card-icon">
+                            <i class="fas fa-globe-asia"></i>
+                        </div>
+                        <h3 class="card-title">Online Presence</h3>
+                        <p>Create a strong online presence and connect with new customers to grow your business.</p>
+                    </div>
                 </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Feature Card 1: Inventory -->
-                    <div class="cyber-card p-8 rounded-xl shadow-inner-dot">
-                        <div class="p-3 w-max rounded-lg bg-neon-blue/20 text-neon-blue mb-4 shadow-neon-md">
-                            <i data-lucide="factory" class="w-7 h-7"></i>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card p-4">
+                        <div class="card-icon">
+                            <i class="fas fa-store"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-2">AI Stock Prediction</h3>
-                        <p class="text-text-faded">Predict demand shifts and optimize procurement. Automated stock re-order alerts to prevent costly outages.</p>
+                        <h3 class="card-title">Free Business Listing</h3>
+                        <p>Create a free business listing, profile, and professional website in minutes.</p>
                     </div>
-
-                    <!-- Feature Card 2: Payments -->
-                    <div class="cyber-card p-8 rounded-xl shadow-inner-dot">
-                        <div class="p-3 w-max rounded-lg bg-neon-green/20 text-neon-green mb-4 shadow-neon-md">
-                            <i data-lucide="qr-code" class="w-7 h-7"></i>
+                </div>
+                <div class="col-md-6 col-lg-4 mx-auto">
+                    <div class="card p-4">
+                        <div class="card-icon">
+                            <i class="fas fa-bullhorn"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Integrated UPI Gateway</h3>
-                        <p class="text-text-faded">Instant, secure, and zero-fee UPI/QR code payment generation directly linked to your shop's ledger.</p>
+                        <h3 class="card-title">Targeted Advertising</h3>
+                        <p>Promote your brand through our various online channels with highly targeted advertising options.</p>
                     </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="#" class="btn-link">Click here to know more <i class="fas fa-arrow-right ms-1"></i></a>
+            </div>
+        </section>
 
-                    <!-- Feature Card 3: Analytics -->
-                    <div class="cyber-card p-8 rounded-xl shadow-inner-dot">
-                        <div class="p-3 w-max rounded-lg bg-neon-blue/20 text-neon-blue mb-4 shadow-neon-md">
-                            <i data-lucide="activity" class="w-7 h-7"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Real-time Performance</h3>
-                        <p class="text-text-faded">Track vital metrics with <span class="text-neon-green">less than 1-second latency</span>. Drill down into product profit mapping.</p>
-                    </div>
-
-                    <!-- Feature Card 4: Marketing -->
-                    <div class="cyber-card p-8 rounded-xl shadow-inner-dot">
-                        <div class="p-3 w-max rounded-lg bg-neon-green/20 text-neon-green mb-4 shadow-neon-md">
-                            <i data-lucide="rocket" class="w-7 h-7"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Hyper-Local Promotions</h3>
-                        <p class="text-text-faded">Target customers within 5km radius with dynamic pricing alerts and personalized loyalty rewards.</p>
-                    </div>
-
-                    <!-- Feature Card 5: Reporting -->
-                    <div class="cyber-card p-8 rounded-xl shadow-inner-dot">
-                        <div class="p-3 w-max rounded-lg bg-neon-blue/20 text-neon-blue mb-4 shadow-neon-md">
-                            <i data-lucide="server-cog" class="w-7 h-7"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Automated Compliance</h3>
-                        <p class="text-text-faded">Generate complete, audit-ready GST and sales reports instantly. Compliance made effortless and error-free.</p>
-                    </div>
-
-                    <!-- Feature Card 6: Support -->
-                    <div class="cyber-card p-8 rounded-xl shadow-inner-dot">
-                        <div class="p-3 w-max rounded-lg bg-neon-green/20 text-neon-green mb-4 shadow-neon-md">
-                            <i data-lucide="headset" class="w-7 h-7"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Tier-1 Field Support</h3>
-                        <p class="text-text-faded">Dedicated support channel with local technical experts available 24/7 for hardware and software issues.</p>
+        <!-- Other Services Section -->
+        <section class="section">
+            <h2 class="section-title">Other Services on www.etawah.shop.in</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="card p-4">
+                        <p>
+                            We also offer a comprehensive <span class="highlight">City Guide</span> which includes various interesting 
+                            articles about Ishtikapuri and other local attractions, events, and information about Etawah.
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- End of Core Feature Section -->
 
-        <!-- Section Separator -->
-        <div class="section-separator my-20"></div>
+        <!-- Network Section -->
+        <section class="section">
+            <div class="network-info text-center">
+                <h3 class="mb-3">A Part of IndiaOnline.in Network</h3>
+                <p>www.etawah.shop.in is a part of the IndiaOnline.in Network - India's largest online network of 475+ city based portals.</p>
+            </div>
+        </section>
 
-        <!-- 3. ACTIVATION PROTOCOL (Timeline Section - Vertical Flow) -->
-        <section id="timeline" class="py-20 lg:py-28">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <span class="text-sm font-black uppercase text-neon-green tracking-widest">Protocol Setup</span>
-                    <h2 class="text-4xl lg:text-5xl font-extrabold mt-2 mb-4">System <span class="neon-text">Activation</span> Timeline</h2>
+        <!-- Mission & Vision -->
+        <section class="section">
+            <div class="mission-vision">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mission-box">
+                            <h4 class="mission-title">
+                                <i class="fas fa-bullseye"></i> Our Mission
+                            </h4>
+                            <p>Providing an easy-to-use platform for customers & businesses of Etawah to connect with each other.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="vision-box">
+                            <h4 class="vision-title">
+                                <i class="fas fa-eye"></i> Our Vision
+                            </h4>
+                            <p>Becoming the one-stop platform for people to get every bit of information about Etawah.</p>
+                        </div>
+                    </div>
                 </div>
-
-                <!-- Timeline Structure (Relative positioning for connectors) -->
-                <div class="relative max-w-3xl mx-auto pt-10">
-                    <!-- Desktop Timeline Connector Line -->
-                    <div class="hidden md:block timeline-line"></div>
-                    
-                    <!-- Timeline Step 1: Registration -->
-                    <div class="flex md:flex-row-reverse relative mb-16 items-center">
-                        <div class="hidden md:block absolute left-1/2 w-4 h-4 rounded-full bg-neon-blue border-4 border-bg-deep transform -translate-x-1/2 shadow-neon-md z-10"></div>
-                        <div class="md:w-1/2 md:pr-12 md:text-right timeline-step">
-                            <h4 class="text-2xl font-bold text-neon-blue mb-2">01. Initialization (Secure Sign-up)</h4>
-                            <p class="text-text-faded">Submit your shop credentials via the encrypted module. Two-factor verification completes within 30 seconds.</p>
-                        </div>
-                        <div class="md:w-1/2 hidden md:block"></div>
-                    </div>
-
-                    <!-- Timeline Step 2: Configuration -->
-                    <div class="flex relative mb-16 items-center">
-                        <div class="hidden md:block absolute left-1/2 w-4 h-4 rounded-full bg-neon-green border-4 border-bg-deep transform -translate-x-1/2 shadow-neon-md z-10"></div>
-                        <div class="md:w-1/2 hidden md:block"></div>
-                        <div class="md:w-1/2 md:pl-12 md:text-left timeline-step">
-                            <h4 class="text-2xl font-bold text-neon-green mb-2">02. Data Sync (Inventory Upload)</h4>
-                            <p class="text-text-faded">Bulk upload existing stock data or use our smart scan utility to build your digital catalogue immediately.</p>
-                        </div>
-                    </div>
-
-                    <!-- Timeline Step 3: Deployment -->
-                    <div class="flex md:flex-row-reverse relative mb-16 items-center">
-                        <div class="hidden md:block absolute left-1/2 w-4 h-4 rounded-full bg-neon-blue border-4 border-bg-deep transform -translate-x-1/2 shadow-neon-md z-10"></div>
-                        <div class="md:w-1/2 md:pr-12 md:text-right timeline-step">
-                            <h4 class="text-2xl font-bold text-neon-blue mb-2">03. Deployment (System Go-Live)</h4>
-                            <p class="text-text-faded">The platform generates your unique digital shop address and activates all payment endpoints. You are now live!</p>
-                        </div>
-                        <div class="md:w-1/2 hidden md:block"></div>
-                    </div>
-
-                    <!-- Final Activation Point -->
-                    <div class="flex justify-center mt-10">
-                        <div class="w-10 h-10 rounded-full bg-neon-green flex items-center justify-center animate-flicker shadow-neon-lg">
-                            <i data-lucide="bolt" class="w-5 h-5 text-bg-deep"></i>
-                        </div>
-                    </div>
+                
+                <div class="text-center mt-4">
+                    <p>To know more about our company - <span class="highlight">Pan India India Internet Pvt. Ltd.</span>, 
+                    please visit our corporate website - <a href="http://www.panindia.in" class="text-white fw-bold">www.panindia.in</a></p>
                 </div>
             </div>
         </section>
-        <!-- End of Activation Protocol Section -->
-
-        <!-- Section Separator -->
-        <div class="section-separator my-20"></div>
-
-        <!-- 4. TESTIMONIALS (Optimized Slider Component - Horizontal Scroll) -->
-        <section id="success" class="py-20 lg:py-28 bg-bg-surface/50 border-t border-b border-bg-surface">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <span class="text-sm font-black uppercase text-neon-blue tracking-widest">Validated Data</span>
-                    <h2 class="text-4xl lg:text-5xl font-extrabold mt-2 mb-4">Validated <span class="neon-text">Shopkeeper</span> Feeds</h2>
-                </div>
-
-                <!-- Testimonial Slider Container - Using standard flexbox and CSS scroll-snapping for performance -->
-                <div id="testimonial-slider" class="scroll-hidden flex space-x-6 pb-6 md:pb-8 overflow-x-scroll snap-x snap-mandatory">
-                    
-                    <!-- Slide 1 -->
-                    <div class="cyber-card flex-shrink-0 w-[90vw] md:w-[320px] p-6 rounded-xl snap-start border-neon-blue/30">
-                        <i data-lucide="quote" class="w-8 h-8 text-neon-green mb-4 opacity-70"></i>
-                        <blockquote class="text-lg text-white italic mb-6">
-                            "The transition was flawless. My online sales jumped 40% in Q1. The real-time inventory saved me hundreds of hours."
-                        </blockquote>
-                        <div class="flex items-center">
-                            <img src="https://placehold.co/48x48/00F0FF/0F172A?text=K.S" alt="Avatar" class="w-12 h-12 rounded-full ring-2 ring-neon-blue object-cover">
-                            <div class="ml-4">
-                                <p class="font-bold text-white">Kiran Singh</p>
-                                <p class="text-sm text-neon-blue">Apparel & Textiles</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Slide 2 -->
-                    <div class="cyber-card flex-shrink-0 w-[90vw] md:w-[320px] p-6 rounded-xl snap-start border-neon-blue/30">
-                        <i data-lucide="quote" class="w-8 h-8 text-neon-green mb-4 opacity-70"></i>
-                        <blockquote class="text-lg text-white italic mb-6">
-                            "The platform is shockingly fast. UPI integration is instant. It's the professionalism I needed to compete with larger chains."
-                        </blockquote>
-                        <div class="flex items-center">
-                            <img src="https://placehold.co/48x48/90EE90/0F172A?text=A.V" alt="Avatar" class="w-12 h-12 rounded-full ring-2 ring-neon-green object-cover">
-                            <div class="ml-4">
-                                <p class="font-bold text-white">Amit Verma</p>
-                                <p class="text-sm text-neon-green">Electronics Hub</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slide 3 -->
-                    <div class="cyber-card flex-shrink-0 w-[90vw] md:w-[320px] p-6 rounded-xl snap-start border-neon-blue/30">
-                        <i data-lucide="quote" class="w-8 h-8 text-neon-green mb-4 opacity-70"></i>
-                        <blockquote class="text-lg text-white italic mb-6">
-                            "No more tax headache. The automated GST reporting is reliable, accurate, and saves me hours of accounting every month."
-                        </blockquote>
-                        <div class="flex items-center">
-                            <img src="https://placehold.co/48x48/00F0FF/0F172A?text=R.J" alt="Avatar" class="w-12 h-12 rounded-full ring-2 ring-neon-blue object-cover">
-                            <div class="ml-4">
-                                <p class="font-bold text-white">Riya Jain</p>
-                                <p class="text-sm text-neon-blue">General Provisions</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Slide 4 -->
-                    <div class="cyber-card flex-shrink-0 w-[90vw] md:w-[320px] p-6 rounded-xl snap-start border-neon-blue/30">
-                        <i data-lucide="quote" class="w-8 h-8 text-neon-green mb-4 opacity-70"></i>
-                        <blockquote class="text-lg text-white italic mb-6">
-                            "The local marketing tool is incredibly potent. My repeat customer rate improved significantly after running two campaigns."
-                        </blockquote>
-                        <div class="flex items-center">
-                            <img src="https://placehold.co/48x48/90EE90/0F172A?text=P.P" alt="Avatar" class="w-12 h-12 rounded-full ring-2 ring-neon-green object-cover">
-                            <div class="ml-4">
-                                <p class="font-bold text-white">Prakash Pal</p>
-                                <p class="text-sm text-neon-green">Footwear Retailer</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Line added to force horizontal scroll awareness on touch devices -->
-                <p class="text-center text-xs text-text-faded mt-4">← Scroll horizontally for more validated feeds →</p>
-            </div>
-        </section>
-        <!-- End of Testimonials Section -->
-
-        <!-- Section Separator -->
-        <div class="section-separator my-20"></div>
-
-        <!-- 5. PRICING MATRIX (Tiered Structure with Neon Highlights) -->
-        <section id="pricing" class="py-20 lg:py-28">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <span class="text-sm font-black uppercase text-neon-green tracking-widest">Deployment Costs</span>
-                    <h2 class="text-4xl lg:text-5xl font-extrabold mt-2 mb-4">Select Your <span class="neon-text">Access Tier</span></h2>
-                    <p class="text-lg text-text-faded max-w-3xl mx-auto">Scalable pricing to match the size and ambition of your digital operation.</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                    <!-- Plan 1: Free Tier -->
-                    <div class="cyber-card p-8 rounded-2xl flex flex-col hover:shadow-neon-md">
-                        <span class="text-lg font-bold text-text-faded mb-2">Basic Index</span>
-                        <h3 class="text-6xl font-extrabold text-white mb-4">Free</h3>
-                        <p class="text-text-faded mb-6 flex-grow">Entry-level access for initial testing and small inventory management.</p>
-                        
-                        <ul class="space-y-4 text-left mb-10">
-                            <li class="flex items-center text-white"><i data-lucide="check-circle" class="w-5 h-5 text-neon-blue mr-3"></i> Core Shop Listing (Indexed)</li>
-                            <li class="flex items-center text-white"><i data-lucide="check-circle" class="w-5 h-5 text-neon-blue mr-3"></i> Up to 100 Product Listings</li>
-                            <li class="flex items-center text-white"><i data-lucide="check-circle" class="w-5 h-5 text-neon-blue mr-3"></i> Basic QR & Digital Invoice</li>
-                            <li class="flex items-center text-text-faded line-through"><i data-lucide="x-circle" class="w-5 h-5 text-text-faded mr-3"></i> AI Forecasting & Priority Support</li>
-                        </ul>
-
-                        <button id="plan-cta-free" class="w-full text-neon-blue border-2 border-neon-blue font-bold py-3.5 rounded-full transition duration-300 hover:bg-neon-blue/10 mt-auto text-xl">
-                            Initialize Free Access
-                        </button>
-                    </div>
-
-                    <!-- Plan 2: Pro Tier (Recommended/Highlighted) -->
-                    <div class="bg-bg-deep p-10 rounded-2xl border-4 border-neon-green flex flex-col relative overflow-hidden transition duration-300 shadow-neon-lg scale-[1.05] z-10">
-                        <!-- Featured Badge -->
-                        <div class="absolute top-0 right-0 bg-neon-green text-bg-deep text-sm font-black py-1 px-6 rounded-bl-xl shadow-xl">
-                            OPTIMUM VALUE
-                        </div>
-
-                        <span class="text-lg font-black text-neon-green mb-2 tracking-widest">PRO DEPLOYMENT</span>
-                        <div class="flex items-baseline mb-4">
-                            <span class="text-6xl font-extrabold text-white">₹999</span>
-                            <span class="text-xl font-medium text-text-faded ml-2">/ month</span>
-                        </div>
-                        <p class="text-text-faded mb-6 flex-grow">Full system capability for rapid scaling and maximum operational efficiency.</p>
-                        
-                        <ul class="space-y-4 text-left mb-10">
-                            <li class="flex items-center text-neon-green font-bold"><i data-lucide="zap" class="w-5 h-5 text-neon-green mr-3"></i> Unlimited Data & Products</li>
-                            <li class="flex items-center text-white"><i data-lucide="check-circle" class="w-5 h-5 text-neon-blue mr-3"></i> AI Demand Prediction Suite</li>
-                            <li class="flex items-center text-white"><i data-lucide="check-circle" class="w-5 h-5 text-neon-blue mr-3"></i> Hyper-Local CRM & Targeting</li>
-                            <li class="flex items-center text-white"><i data-lucide="check-circle" class="w-5 h-5 text-neon-blue mr-3"></i> Priority 4-Hour Support SLA</li>
-                        </ul>
-
-                        <button id="plan-cta-pro" class="w-full cta-button mt-auto text-xl shadow-neon-blue/60">
-                            Upgrade & Activate
-                        </button>
-                    </div>
-
-                    <!-- Plan 3: Business Tier -->
-                    <div class="cyber-card p-8 rounded-2xl flex flex-col hover:shadow-neon-md">
-                        <span class="text-lg font-bold text-text-faded mb-2">Enterprise Node</span>
-                        <h3 class="text-6xl font-extrabold text-white mb-4">₹2999</h3>
-                        <p class="text-text-faded mb-6 flex-grow">Designed for multi-branch retailers requiring dedicated API access and integration services.</p>
-                        
-                        <ul class="space-y-4 text-left mb-10">
-                            <li class="flex items-center text-white"><i data-lucide="check-circle" class="w-5 h-5 text-neon-blue mr-3"></i> All Pro Features Included</li>
-                            <li class="flex items-center text-white"><i data-lucide="check-circle" class="w-5 h-5 text-neon-blue mr-3"></i> Multi-Location Data Mesh Sync</li>
-                            <li class="flex items-center text-white"><i data-lucide="check-circle" class="w-5 h-5 text-neon-blue mr-3"></i> Custom Data API / Webhook Access</li>
-                            <li class="flex items-center text-white"><i data-lucide="check-circle" class="w-5 h-5 text-neon-blue mr-3"></i> Dedicated Account Architect</li>
-                        </ul>
-
-                        <a href="mailto:enterprise@etawahdigital.com" class="w-full text-text-faded border-2 border-text-faded font-bold py-3.5 rounded-full transition duration-300 hover:bg-bg-surface mt-auto text-xl text-center">
-                            Request Data Sheet
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End of Pricing Section -->
-        
     </main>
 
-    <!-- 6. FOOTER SECTION (Clean and Structured) -->
-    <footer class="bg-bg-surface/50 border-t border-neon-blue/30 py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
-                <!-- Column 1: Brand & Mission -->
-                <div class="space-y-4 col-span-2 md:col-span-1">
-                    <div class="flex items-center">
-                        <i data-lucide="store" class="text-neon-green w-6 h-6 mr-2"></i>
-                        <span class="text-xl font-bold text-white tracking-wider">ET-DIGITAL</span>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <h5 class="footer-title">Important Links</h5>
+                    <div class="footer-links">
+                        <a href="#"><i class="fas fa-sign-in-alt me-2"></i>Login / Register</a>
+                        <a href="#"><i class="fas fa-book me-2"></i>Etawah Directory</a>
+                        <a href="#"><i class="fas fa-map-marked-alt me-2"></i>Etawah Guide</a>
+                        <a href="#"><i class="fas fa-hands-helping me-2"></i>Help your Community</a>
+                        <a href="#"><i class="fas fa-share-alt me-2"></i>Share</a>
                     </div>
-                    <p class="text-sm text-text-faded">Accelerating local economic growth through digital transformation.</p>
                 </div>
-                
-                <!-- Column 2: System Links -->
-                <div>
-                    <h5 class="text-lg font-bold text-white mb-3">System Access</h5>
-                    <ul class="space-y-2 text-sm text-text-faded">
-                        <li><a href="#features" class="hover:text-neon-blue transition duration-150">Feature Grid</a></li>
-                        <li><a href="#timeline" class="hover:text-neon-blue transition duration-150">Setup Protocol</a></li>
-                        <li><a href="#success" class="hover:text-neon-blue transition duration-150">Data Feeds</a></li>
-                    </ul>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <h5 class="footer-title">Business Links</h5>
+                    <div class="footer-links">
+                        <a href="#"><i class="fas fa-plus-circle me-2"></i>List Your Business</a>
+                        <a href="#"><i class="fas fa-ad me-2"></i>Advertise With Us</a>
+                        <a href="#"><i class="fas fa-phone me-2"></i>Contact Us</a>
+                        <a href="#"><i class="fas fa-info-circle me-2"></i>About Us</a>
+                        <a href="#"><i class="fas fa-handshake me-2"></i>Become our Sales Partner</a>
+                    </div>
                 </div>
-
-                <!-- Column 3: Support Protocol -->
-                <div>
-                    <h5 class="text-lg font-bold text-white mb-3">Support Channel</h5>
-                    <ul class="space-y-2 text-sm text-text-faded">
-                        <li><a href="#" class="hover:text-neon-blue transition duration-150">Contact Center</a></li>
-                        <li><a href="#" class="hover:text-neon-blue transition duration-150">System Status</a></li>
-                        <li><a href="#" class="hover:text-neon-blue transition duration-150">Bug Reporting</a></li>
-                    </ul>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <h5 class="footer-title">Network</h5>
+                    <div class="footer-links">
+                        <a href="#"><i class="fas fa-network-wired me-2"></i>A part of IndiaOnline.in Network</a>
+                    </div>
                 </div>
-                
-                <!-- Column 4: Compliance Matrix -->
-                <div>
-                    <h5 class="text-lg font-bold text-white mb-3">Legal Matrix</h5>
-                    <ul class="space-y-2 text-sm text-text-faded">
-                        <li><a href="#" class="hover:text-neon-blue transition duration-150">Privacy Cipher</a></li>
-                        <li><a href="#" class="hover:text-neon-blue transition duration-150">Terms of Service</a></li>
-                        <li><a href="#" class="hover:text-neon-blue transition duration-150">License Agreement</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Column 5: Contact Info -->
-                <div class="col-span-2 md:col-span-1">
-                    <h5 class="text-lg font-bold text-white mb-3">Contact Node</h5>
-                    <p class="text-sm text-text-faded">Support: <a href="tel:+918000080000" class="hover:text-neon-green">80000 80000</a></p>
-                    <p class="text-sm text-text-faded">Email: <a href="mailto:connect@etawahdigital.com" class="hover:text-neon-green">connect@etawahdigital.com</a></p>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <h5 class="footer-title">Legal</h5>
+                    <div class="footer-links">
+                        <a href="#"><i class="fas fa-shield-alt me-2"></i>Privacy Policy</a>
+                        <a href="#"><i class="fas fa-file-contract me-2"></i>Terms of Service</a>
+                        <a href="#"><i class="fas fa-exclamation-triangle me-2"></i>Infringement Policy</a>
+                    </div>
                 </div>
             </div>
             
-            <!-- Copyright and Social Icons -->
-            <div class="mt-12 border-t border-neon-blue/10 pt-8 text-sm text-center md:flex md:justify-between md:items-center">
-                <p class="text-text-faded mb-4 md:mb-0">System Integrity Checked. &copy; 2024 ET-Digital. All Rights Reserved.</p>
-                <div class="flex justify-center space-x-6">
-                    <a href="#" class="text-text-faded hover:text-neon-blue transition duration-150"><i data-lucide="instagram" class="w-5 h-5"></i></a>
-                    <a href="#" class="text-text-faded hover:text-neon-blue transition duration-150"><i data-lucide="facebook" class="w-5 h-5"></i></a>
-                    <a href="#" class="text-text-faded hover:text-neon-blue transition duration-150"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
-                </div>
+            <div class="copyright text-center">
+                <p>Copyright - Pan India Internet Pvt Ltd (PIIPL)</p>
+            </div>
+            
+            <div class="disclaimer text-center">
+                <p>Third-party brand trademarks and logos appearing here are owned by the respective third parties and are not affiliated with www.etawah.shop.in. View our complete Disclaimer.</p>
             </div>
         </div>
     </footer>
-    <!-- End of Footer Section -->
 
-    <!-- 7. MODAL COMPONENT (Hidden by Default) - Registration Form -->
-    <div id="modal-overlay" class="fixed inset-0 bg-bg-deep/90 backdrop-blur-sm z-[999] hidden items-center justify-center p-4 transition-opacity duration-300" onclick="if(event.target.id === 'modal-overlay' || event.target.id === 'close-modal-btn') closeModal();">
-        <div id="modal-content" class="cyber-card p-8 rounded-xl max-w-sm w-full transform scale-90 opacity-0 transition-all duration-300 shadow-neon-lg border-neon-green/50">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-bold neon-text">Access Credentials</h3>
-                <button id="close-modal-btn" class="text-text-faded hover:text-neon-blue transition duration-200">
-                    <i data-lucide="x" class="w-7 h-7"></i>
-                </button>
-            </div>
-            
-            <form id="signup-form" class="space-y-4">
-                <!-- Shop Name Input -->
-                <div>
-                    <label for="shop-name" class="block text-sm font-medium text-neon-blue mb-1">Shop Entity Name</label>
-                    <input type="text" id="shop-name" name="shop-name" required class="w-full px-4 py-2.5 rounded-lg bg-bg-deep border border-neon-blue/50 text-white focus:ring-neon-green focus:border-neon-green/70 transition duration-200" placeholder="e.g., The Future Mart">
-                </div>
-                <!-- Contact Input -->
-                <div>
-                    <label for="contact" class="block text-sm font-medium text-neon-blue mb-1">Auth Mobile Node</label>
-                    <input type="tel" id="contact" name="contact" required class="w-full px-4 py-2.5 rounded-lg bg-bg-deep border border-neon-blue/50 text-white focus:ring-neon-green focus:border-neon-green/70 transition duration-200" placeholder="+91 XXXX XXXXX">
-                </div>
-                
-                <button type="submit" class="w-full cta-button text-lg mt-6">
-                    Activate Access
-                </button>
-            </form>
-
-            <p id="modal-message" class="mt-4 text-center text-neon-green font-semibold hidden"></p>
-        </div>
-    </div>
-    <!-- End of Modal Component -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

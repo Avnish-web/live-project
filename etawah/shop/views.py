@@ -5,9 +5,6 @@ from .models import Shop
 def home(request):
     return render(request, 'shop/index.html')
 
-def about(request):
-    return render(request, 'shop/about.html')
-
 def pricing(request):
     return render(request, 'shop/pricing.html')
 
@@ -20,3 +17,6 @@ def status(request):
 def shop_list(request):
     shops = Shop.objects.all()
     return render(request, "shop/shop.html", {"shops": shops})
+
+def about_view(request):
+    return render(request, 'shop/about.html')

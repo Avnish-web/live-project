@@ -1,12 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("JS Loaded");
+    console.log("Etawah Shops Market – JS Loaded");
 
     // ===============================
     // LOTTIE HERO ANIMATION
     // ===============================
     const LOTTIE_URL = "https://lottie.host/8026cc33-8a3d-4c38-8ff6-7b4476007b5a/Yw4zV8K3rC.json";
     const lottieContainer = document.getElementById("lottie-hero");
-
     if (window.lottie && lottieContainer) {
         lottie.loadAnimation({
             container: lottieContainer,
@@ -17,61 +16,54 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     } else {
         console.warn("Lottie not loaded or container missing.");
+        if (lottieContainer) {
+            lottieContainer.innerHTML = `<img src="https://placehold.co/500x400/4f46e5/ffffff?text=Shop+Animation" class="img-fluid" alt="Hero Illustration">`;
+        }
     }
 
     // ===============================
-    // ANIMATE ON SCROLL (AOS)
+    // AOS – Animate On Scroll
     // ===============================
     if (typeof AOS !== "undefined") {
-        AOS.init({ 
-            duration: 800,
+        AOS.init({
+            duration: 700,
             once: true,
+            easing: 'ease-out-cubic'
         });
-    } else {
-        console.warn("AOS library not found.");
     }
 
     // ===============================
-    // HERO NUMBER COUNT-UP
+    // HERO NUMBER COUNTER
     // ===============================
     const heroNums = document.querySelectorAll(".hero-num");
+    heroNums.forEach(el => {
+        const target = parseInt(el.dataset.amount) || 0;
+        if (target <= 0) return;
 
-    if (heroNums.length > 0) {
-        heroNums.forEach(function (el) {
-            const max = +el.dataset.amount || 0;
-            let current = 0;
-            const speed = 12;
-            const step = Math.ceil(max / 40);
-
-            const observer = new IntersectionObserver(
-                (entries) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting && current === 0) {
-                            function update() {
-                                current += step;
-                                if (current > max) current = max;
-
-                                el.textContent = current.toLocaleString("en-IN");
-
-                                if (current < max) {
-                                    setTimeout(update, speed);
-                                } else {
-                                    observer.unobserve(el);
-                                }
-                            }
-                            update();
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    let count = 0;
+                    const increment = target / 60;
+                    const timer = setInterval(() => {
+                        count += increment;
+                        if (count >= target) {
+                            el.textContent = target.toLocaleString("en-IN") + "+";
+                            clearInterval(timer);
+                            observer.unobserve(el);
+                        } else {
+                            el.textContent = Math.ceil(count).toLocaleString("en-IN");
                         }
-                    });
-                },
-                { threshold: 0.5 }
-            );
-
-            observer.observe(el);
-        });
-    }
+                    }, 16);
+                    observer.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+        observer.observe(el);
+    });
 
     // ===============================
-    // PRICING TOGGLE (Monthly / Yearly)
+    // PRICING TOGGLE
     // ===============================
     const monthBtn = document.getElementById("billing-month");
     const yearBtn = document.getElementById("billing-year");
@@ -85,21 +77,27 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         yearBtn.addEventListener("click", () => {
-            priceBusiness.innerHTML = '₹409<span class="fs-6 fw-normal">/mo</span> <span class="text-success fs-6 fw-normal">(billed yearly)</span>';
+            priceBusiness.innerHTML = '₹409<span class="fs-6 fw-normal">/mo</span> <span class="text-success fs-6">(billed yearly)</span>';
             yearBtn.classList.add("active");
             monthBtn.classList.remove("active");
         });
     }
 
     // ===============================
-    // Generic Button Test
+    // Smooth Scroll for Anchor Links
     // ===============================
-    const buttons = document.querySelectorAll(".btn-modern");
-    buttons.forEach((btn) => {
-        btn.addEventListener("click", () => {
-            console.log("Button clicked:", btn.textContent);
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const target = document.querySelector(targetId);
+            if (target) {
+                const offsetTop = target.getBoundingClientRect().top + window.scrollY;
+                window.scrollTo({
+                    top: offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
         });
     });
 });
-
-
